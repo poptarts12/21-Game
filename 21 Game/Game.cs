@@ -8,5 +8,10 @@ namespace _21_Game
 {
     internal class Game
     {
+        private Player player1;
+        private Player player2;
+        private Deck gameDeck;
+        private int currentPlayer;
+        
     }
 }

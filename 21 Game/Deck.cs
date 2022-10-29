@@ -8,6 +8,6 @@ namespace _21_Game
 {
     internal class Deck
     {
-
+        private List<Card> cards;
     }
 }

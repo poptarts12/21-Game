@@ -8,5 +8,10 @@ namespace _21_Game
 {
     internal class Player
     {
+        private string name;
+        private List<Card> cards;
+        private int points;
+        private bool active;
+
     }
 }
