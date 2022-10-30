@@ -9,9 +9,19 @@ namespace _21_Game
     internal class Player
     {
         private string name;
-        private List<Card> cards;
-        private int points;
-        private bool active;
+        public List<Card> cards;
+        private static int points = 0;
+        private bool active = true;
+        public Player(string name)
+        {
+            this.name = name;
+        }
+        public string GetName() => name;
+        public int GetPoints() => points;
+        public void GetCard(Card card)
+        {
+            card
+        }
 
     }
 }
