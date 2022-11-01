@@ -9,8 +9,9 @@ namespace _21_Game
     internal class Player
     {
         private string name;
-        public List<Card> cards;
-        private static int points = 0;
+        private List<Card> cards;
+        private static int points;
+        private int playerPoints;
         private bool active = true;
         public Player(string name)
         {
@@ -18,9 +19,16 @@ namespace _21_Game
         }
         public string GetName() => name;
         public int GetPoints() => points;
+        public int GetPlayerPoints() => playerPoints;
         public void GetCard(Card card)
         {
-            card
+            cards.Add(card);
+        }
+        public void Quit() { active = false;}
+        public void AddPoints(int points)
+        {
+            playerPoints += points;
+            this.points += points; 
         }
 
     }

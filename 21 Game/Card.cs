@@ -17,11 +17,31 @@ namespace _21_Game
         }
         private static Shape shape;
         private int value;
-        public Card(string shapeGot, int value)
+        public Card(Shape shape, int value)
         {
-            shape = shapeGot;
+            this.shape = Shape.shape;
             this.value = value;
         }
-        public static enum 
+        public  Shape GetShape() => shape;
+        public int GetValue() => value;
+        public bool IsAce()
+        {
+            if (value == 1 || value == 11)
+                return true;
+            else
+                return false;
+        }
+        public bool IsPictureCard()
+        {
+            if (value == 10)
+                return true;
+            else 
+                return false;
+        }
+        public override string ToString()
+        {
+
+        }  
+        
     }
 }
