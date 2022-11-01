@@ -8,18 +8,18 @@ namespace _21_Game
 {
     internal class Card
     {
-        private  enum Shape
+        public enum Shape
         {
-            SPADE,
-            DIAMOND,
-            HEART,
-            CLUB,
+            SPADE=0,
+            DIAMOND=1,
+            HEART=2,
+            CLUB=3,
         }
-        private static Shape shape;
-        private int value;
+        private  Shape shape;
+        public int value;
         public Card(Shape shape, int value)
         {
-            this.shape = Shape.shape;
+            this.shape = shape;
             this.value = value;
         }
         public  Shape GetShape() => shape;
