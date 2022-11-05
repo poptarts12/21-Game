@@ -52,6 +52,12 @@ namespace _21_Game
             StringBuilder sb = new StringBuilder();
             sb.Append("The value: " + value.ToString());
             sb.Append("\n");
+            if (IsPictureCard())
+                sb.Append("type of card: picture card \n"); 
+            if (IsAce())
+                sb.Append("type of card: ace card \n");
+            else
+                sb.Append("type of card: number card \n");
             sb.Append("The Shape is: " + shape.ToString());
             return sb.ToString();
         }  
