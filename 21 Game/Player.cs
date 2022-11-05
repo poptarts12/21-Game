@@ -27,8 +27,7 @@ namespace _21_Game
         public void Quit() { active = false;}
         public void AddPoints(int points)
         {
-            playerPoints += points;
-            this.points += points; 
+            
         }
 
     }

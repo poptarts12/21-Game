@@ -26,7 +26,7 @@ namespace _21_Game
         public int GetValue() => value;
         public bool IsAce()
         {
-            if (value == 1 || value == 11)
+            if (value == 1)
                 return true;
             else
                 return false;
@@ -38,9 +38,21 @@ namespace _21_Game
             else 
                 return false;
         }
+        public string GetDesc()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("The value: " + value.ToString());
+            sb.Append("\n");
+            sb.Append("The Shape is: " + shape.ToString());
+            return sb.ToString();
+        }
         public override string ToString()
         {
-
+            StringBuilder sb = new StringBuilder();
+            sb.Append("The value: " + value.ToString());
+            sb.Append("\n");
+            sb.Append("The Shape is: " + shape.ToString());
+            return sb.ToString();
         }  
         
     }

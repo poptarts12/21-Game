@@ -11,13 +11,44 @@ namespace _21_Game
         public List<Card> cards;
         public Deck() 
         {
-            
-            //picture cards adding:
-            for (int i = 0; i < 12; i++)
+            CreateNumCards();
+            CreatePictureCards();
+            CreateAce();
+        }
+        public void Shuffle()
+        {
+            int len = cards.Count();
+            Random rnd = new Random();
+            for(int i = 0;i < len;i++)
             {
-                Card card = new Card(Card.Shape.CLUB, 10);
-                cards.Add(card);
+                int randomIndex = rnd.Next(0, len);
+                Card temp = cards[i];
+                cards[i] = cards[randomIndex];
+                cards[randomIndex] = temp;
             }
+        }
+        public Card Deal()
+        {
+            Random rnd = new Random();
+            int len = cards.Count();
+            int randomIndex = rnd.Next(0, len);
+            Card card = cards[randomIndex];
+            cards.Remove(cards[randomIndex]);
+            return card;
+        }
+        public int Count()
+        {
+            return cards.Count();
+        }
+        private bool IsEmpty()
+        {
+            if (Count() == 0)
+                return true;
+            return false;
+        }
+        public override string ToString()
+        {
+
         }
         private  void CreateNumCards()
         {
@@ -51,6 +82,13 @@ namespace _21_Game
                 cards.Add(card);
             }
         }
-
+        private void CreateAce()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Card card = new Card(Card.Shape.CLUB, 1);
+                cards.Add(card);
+            }
+        }
     }
 }
