@@ -8,20 +8,17 @@ namespace _21_Game
 {
     internal class Deck
     {
-        public List<Card> cards;
+        private List<Card> cards;
         public Deck() 
         {
-            CreateNumCards();
-            CreatePictureCards();
-            CreateAce();
+           cards =  CreateCardsDeck();
         }
         public void Shuffle()
         {
-            int len = cards.Count();
             Random rnd = new Random();
-            for(int i = 0;i < len;i++)
+            for(int i = 0;i < cards.Count; i++)
             {
-                int randomIndex = rnd.Next(0, len);
+                int randomIndex = rnd.Next(0, cards.Count);
                 Card temp = cards[i];
                 cards[i] = cards[randomIndex];
                 cards[randomIndex] = temp;
@@ -29,66 +26,48 @@ namespace _21_Game
         }
         public Card Deal()
         {
-            Random rnd = new Random();
-            int len = cards.Count();
-            int randomIndex = rnd.Next(0, len);
-            Card card = cards[randomIndex];
-            cards.Remove(cards[randomIndex]);
+            Card card = cards[cards.Count - 1];
+            cards.RemoveAt(cards.Count - 1);
             return card;
         }
-        public int Count()
-        {
-            return cards.Count();
-        }
-        private bool IsEmpty()
-        {
-            if (Count() == 0)
-                return true;
-            return false;
-        }
+        public int Count() => cards.Count;
+
+        public bool IsEmpty() => cards.Count == 0;
+
         public override string ToString()
         {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                sb.Append(cards[i]);
+                sb.Append(", ");
+            }
+            return sb.ToString();
+        }
+        private static List<Card> CreateCardsDeck()
+        {
+            List<Card> cards = new List<Card>();
+            for (int i = 2; i < 15; i++)
+                foreach (Card.Shape j in Enum.GetValues(typeof(Card.Shape)))
+                {
+                    if (i <= 10) //num cards
+                    {
+                        Card card = new Card(j, i);
+                        cards.Add(card);
+                    }
+                    else if (i < 14) // picture cards
+                    {
+                        Card card = new Card(j, 10);
+                        cards.Add(card);
+                    }
+                    else //ace cards
+                    {
+                        Card card = new Card(j, 11);
+                        cards.Add(card);
+                    }
+                }
+            return cards;
+        }
 
-        }
-        private  void CreateNumCards()
-        {
-            for (int i = 1; i < 10; i++)
-            {
-                Card card = new Card(Card.Shape.HEART, i);
-                cards.Add(card);
-            }
-            for (int i = 1; i < 10; i++)
-            {
-                Card card = new Card(Card.Shape.SPADE, i);
-                cards.Add(card);
-            }
-            for (int i = 1; i < 10; i++)
-            {
-                Card card = new Card(Card.Shape.DIAMOND, i);
-                cards.Add(card);
-            }
-            for (int i = 1; i < 10; i++)
-            {
-                Card card = new Card(Card.Shape.CLUB, i);
-                cards.Add(card);
-            }
-        }
-        private void CreatePictureCards()
-        {
-            //picture cards adding:
-            for (int i = 0; i < 12; i++)
-            {
-                Card card = new Card(Card.Shape.CLUB, 10);
-                cards.Add(card);
-            }
-        }
-        private void CreateAce()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                Card card = new Card(Card.Shape.CLUB, 1);
-                cards.Add(card);
-            }
-        }
     }
 }

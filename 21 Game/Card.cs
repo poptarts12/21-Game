@@ -8,7 +8,7 @@ namespace _21_Game
 {
     internal class Card
     {
-        public enum Shape
+        public  enum Shape
         {
             SPADE=0,
             DIAMOND=1,
@@ -16,7 +16,8 @@ namespace _21_Game
             CLUB=3,
         }
         private  Shape shape;
-        public int value;
+        private int value;
+        public void SetValue(int newVal){value = newVal;}
         public Card(Shape shape, int value)
         {
             this.shape = shape;

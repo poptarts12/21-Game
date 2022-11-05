@@ -16,6 +16,7 @@ namespace _21_Game
         {
             player1 = new Player(pl1);
             player2 = new Player(pl2);
+            gameDeck = new Deck();
         }
         public Player GetCurrentPlayer()
         {
@@ -23,6 +24,11 @@ namespace _21_Game
                 return player1;
             return player2;
         }
+        public void GiveCurrentPayerCard() 
+        {
+            Player currentPlayer  = GetCurrentPlayer();
+            currentPlayer.GetCard(gameDeck.Deal());
 
+        }
     }
 }
