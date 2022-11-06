@@ -32,14 +32,34 @@ namespace _21_Game
                 for (currentPlayer = 0; currentPlayer < 2 ; currentPlayer++)
                 {
                     Console.WriteLine("it's now" + GetCurrentPlayer().GetName() + " turn");
-                    Console.WriteLine("if you want to take card write \"take\" else write every other thing");
+                    Console.WriteLine(GetCurrentPlayer().ToString());
+                    Console.WriteLine("if you want to take another card write \"take\" else write every other thing");
                     Console.WriteLine("if you want to quit write -1");
-                    if (Console.ReadLine() == "take")
-                        GiveCurrentPlayerCard();
-                    else if (Console.ReadLine() == "-1")
+                    if (Console.ReadLine() == "-1")
                         GetCurrentPlayer().Quit();
                         Console.WriteLine(GetCurrentPlayer().GetName() + "loose");
-                        
+                    else if (Console.ReadLine() == "take")
+                        GiveCurrentPlayerCard();
+                    Console.Clear()
+                    Console.WriteLine(GetCurrentPlayer().ToString());
+                    Console.WriteLine("if you want to Be declare win write \"win\" else write every other thing");
+                    if (Console.ReadLine() == "win")
+                        if (GetWinner() == player1 && currentPlayer == 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("youve won!!!!");
+                        }
+                            
+                        else if (GetWinner() == player2 && currentPlayer == 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("youve won!!!!");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("youve been caught cheating! you havnt won");
+                        }
                 }
 
             }
